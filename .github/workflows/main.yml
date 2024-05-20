@@ -1,0 +1,47 @@
+name: Compile Multi-Repo Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the primary repository
+      - name: Checkout primary repository
+        uses: actions/checkout@v2
+
+      # Check out the first additional repository
+      - name: Checkout additional repository 1
+        uses: actions/checkout@v2
+        with:
+          repository: GSathishBabu_lnw/arg_poc
+           # Use a personal access token if needed
+          path: arg_poc
+
+      # Check out the second additional repository
+      - name: Checkout additional repository 2
+        uses: actions/checkout@v2
+        with:
+          repository: GSathishBabu_lnw/arg_api_poc
+          
+          path: arg_api_poc
+
+  
+      - name: Compile code
+        run: |
+          cd arg_poc
+          chmod +x ./test.sh
+          ./test.sh
+      - name: Compile code
+        run: |
+          cd arg_api_poc
+          chmod +x ./py_poc.sh
+          python3 my_py.py
+        

@@ -21,7 +21,7 @@ jobs:
       - name: Checkout additional repository 1
         uses: actions/checkout@v2
         with:
-          repository: sathish1223/arg_api
+          repository: sathish1223/arg_api/
            # Use a personal access token if needed
           path: arg_api
 
@@ -29,7 +29,7 @@ jobs:
       - name: Checkout additional repository 2
         uses: actions/checkout@v2
         with:
-          repository: sathish1223/arg
+          repository: sathish1223/arg/
           
           path: arg
 
@@ -37,11 +37,11 @@ jobs:
       - name: Compile code
         run: |
           cd arg_poc
-          chmod +x ./test.sh
+          chmod +x test.sh
           ./test.sh
       - name: Compile code
         run: |
           cd arg_api_poc
-          chmod +x ./py_poc.sh
+          chmod +x my_py.py
           python3 my_py.py
         

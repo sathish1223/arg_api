@@ -13,9 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Check out the primary repository
-      - name: Checkout primary repository
-        uses: actions/checkout@v2
+    
 
       # Check out the first additional repository
       - name: Checkout additional repository 1
@@ -29,7 +27,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: sathish1223/arg2
-          path: arg  # Specify the path where the repository should be checked out
+          path: arg2  # Specify the path where the repository should be checked out
 
       # Compile code from the first repository
       - name: Compile code from arg_api

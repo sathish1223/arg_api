@@ -28,7 +28,7 @@ jobs:
       - name: Checkout additional repository 2
         uses: actions/checkout@v2
         with:
-          repository: sathish1223/arg
+          repository: sathish1223/arg2
           path: arg  # Specify the path where the repository should be checked out
 
       # Compile code from the first repository
@@ -41,6 +41,6 @@ jobs:
       # Compile code from the second repository
       - name: Compile code from arg
         run: |
-          cd arg
+          cd arg2
           chmod +x test.sh
           ./test.sh

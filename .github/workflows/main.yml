@@ -21,17 +21,17 @@ jobs:
       - name: Checkout additional repository 1
         uses: actions/checkout@v2
         with:
-          repository: GSathishBabu_lnw/arg_poc
+          repository: sathish1223/arg_api
            # Use a personal access token if needed
-          path: arg_poc
+          path: arg_api
 
       # Check out the second additional repository
       - name: Checkout additional repository 2
         uses: actions/checkout@v2
         with:
-          repository: GSathishBabu_lnw/arg_api_poc
+          repository: sathish1223/arg
           
-          path: arg_api_poc
+          path: arg
 
   
       - name: Compile code

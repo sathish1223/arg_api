@@ -22,27 +22,25 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: sathish1223/arg_api
-           # Use a personal access token if needed
-          path: arg_api
+          path: arg_api  # Specify the path where the repository should be checked out
 
       # Check out the second additional repository
       - name: Checkout additional repository 2
         uses: actions/checkout@v2
         with:
           repository: sathish1223/arg
-          
-          path: /home/runner/work/arg_api/arg_api
-      - name: Compile code
+          path: arg  # Specify the path where the repository should be checked out
+
+      # Compile code from the first repository
+      - name: Compile code from arg_api
         run: |
           cd arg_api
           chmod +x my_py.py
           python3 my_py.py
 
-  
-      - name: Compile code
+      # Compile code from the second repository
+      - name: Compile code from arg
         run: |
-          cd ../arg
+          cd arg
           chmod +x test.sh
           ./test.sh
-     
-        

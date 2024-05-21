@@ -33,7 +33,7 @@ jobs:
       - name: Compile code from arg_api
         run: |
           cd arg_api
-          #chmod +x my_py.py
+        
           mkdir 1234
 
       # Compile code from the second repository

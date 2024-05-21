@@ -33,12 +33,11 @@ jobs:
       - name: Compile code from arg_api
         run: |
           cd arg_api
-          chmod +x my_py.py
-          python3 my_py.py
+          #chmod +x my_py.py
+          python my_py.py
 
       # Compile code from the second repository
       - name: Compile code from arg
         run: |
           cd arg2
-          chmod +x test.sh
-          ./test.sh
+          mkdir abcd

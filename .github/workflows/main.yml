@@ -26,5 +26,5 @@ jobs:
         body: |
           This is an automated pull request created by GitHub Actions.
 
-    - name: Output Pull Request URL
-      run: echo "Pull Request URL: ${{ steps.create-pull-request.outputs.pull-request-url }}"
+#    - name: Output Pull Request URL
+ #     run: echo "Pull Request URL: ${{ steps.create-pull-request.outputs.pull-request-url }}"

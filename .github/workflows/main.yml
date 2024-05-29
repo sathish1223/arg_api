@@ -1,43 +1,30 @@
-name: Compile Multi-Repo Code
+name: Create Pull Request to Main
 
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - '*'  # Trigger on any push to any branch except the main branch
 
 jobs:
-  compile:
-    runs-on: self-hosted
+  create-pull-request:
+    if: github.ref != 'refs/heads/main'  # Run this job only if the branch is not main
+    runs-on: ubuntu-latest
 
     steps:
-    
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Check out the repository's code
 
-      # Check out the first additional repository
-      - name: Checkout additional repository 1
-        uses: actions/checkout@v2
-        with:
-          repository: sathish1223/arg_api
-          path: arg_api  # Specify the path where the repository should be checked out
+    - name: Create Pull Request
+      id: create-pull-request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in GITHUB_TOKEN
+        commit-message: "Automated Pull Request - ${{ github.sha }}"
+        branch: ${{ github.ref }}  # The branch that triggered the workflow
+        base: main  # The base branch for the pull request
+        title: "Automated Pull Request"
+        body: |
+          This is an automated pull request created by GitHub Actions.
 
-      # Check out the second additional repository
-      - name: Checkout additional repository 2
-        uses: actions/checkout@v2
-        with:
-          repository: sathish1223/arg2
-          path: arg2  # Specify the path where the repository should be checked out
-
-      # Compile code from the first repository
-      - name: Compile code from arg_api
-        run: |
-          cd arg_api
-        
-          mkdir 1234
-
-      # Compile code from the second repository
-      - name: Compile code from arg
-        run: |
-          cd arg2
-          mkdir abcd
+    - name: Output Pull Request URL
+      run: echo "Pull Request URL: ${{ steps.create-pull-request.outputs.pull-request-url }}"
